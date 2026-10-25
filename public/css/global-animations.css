@@ -1,0 +1,296 @@
+/* Global Smooth Animations, Transitions, and Calm Theme - Adam Rental */
+
+/* --- 1. Premium Calm Color Theme --- */
+:root {
+    --theme-bg: #f3f6fa;
+    --theme-card-bg: #ffffff;
+    --theme-text-dark: #1e293b;
+    --theme-text-muted: #64748b;
+    --theme-primary: #3b82f6;
+    --theme-primary-hover: #2563eb;
+    --theme-border: #e2e8f0;
+}
+
+/* Apply Body Color & Background */
+body {
+    opacity: 0;
+    animation: pageFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background-color: var(--theme-bg) !important;
+    color: var(--theme-text-dark) !important;
+    transition: opacity 0.3s ease;
+}
+
+/* Page Fade-In Keyframe */
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Override standard Bootstrap background classes for consistency */
+.bg-light {
+    background-color: var(--theme-bg) !important;
+}
+
+.bg-white {
+    background-color: var(--theme-card-bg) !important;
+}
+
+/* --- 2. Top Progress Bar (minimalist page loader) --- */
+#top-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    z-index: 99999;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+}
+
+/* --- 3. Card & Panel Styling (Calm & Elevated) --- */
+.card, .section-card, .about-card, .profile-card, .search-box, .rental-card, .empty-state {
+    background-color: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: 0 8px 30px rgba(100, 116, 139, 0.04) !important;
+    border-radius: 16px !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.card:hover, .value-card:hover, .rental-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 20px 40px rgba(100, 116, 139, 0.09) !important;
+    border-color: var(--theme-primary) !important;
+}
+
+/* --- 4. Button Micro-interactions & Style --- */
+.btn {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary, .btn-primary-custom, .btn-submit, .btn-green, .btn-custom.btn-primary-custom {
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25) !important;
+    border-radius: 50px !important;
+}
+
+.btn-primary:hover, .btn-primary-custom:hover, .btn-submit:hover, .btn-green:hover, .btn-custom.btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--theme-primary-hover) 0%, #1d4ed8 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35) !important;
+}
+
+.btn-primary:active, .btn-primary-custom:active, .btn-submit:active, .btn-green:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2) !important;
+}
+
+.btn-secondary-custom {
+    background: white !important;
+    color: var(--theme-primary) !important;
+    border: 2px solid var(--theme-primary) !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-secondary-custom:hover {
+    background: var(--theme-primary) !important;
+    color: white !important;
+}
+
+/* --- 5. Form Focus Glow --- */
+.form-control, .form-select {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: 2px solid #e2e8f0 !important;
+    background-color: #f8fafc !important;
+    color: var(--theme-text-dark) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--theme-primary) !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+    transform: translateY(-1px);
+}
+
+/* --- 6. Navbar Link Underline Animation & Styling --- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    transition: color 0.3s ease !important;
+    padding-bottom: 6px !important;
+    display: inline-block !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--theme-primary);
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar-nav .nav-link:hover::after, 
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* --- 7. Pulsing Icons & Extra Calm Utilities --- */
+.animate-pulse-slow {
+    animation: pulseSlow 2.5s infinite;
+}
+
+@keyframes pulseSlow {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+.profile-info-item {
+    background-color: #f8fafc !important;
+    border: 1px solid var(--theme-border) !important;
+    border-left: 4px solid var(--theme-primary) !important;
+    border-radius: 12px !important;
+}
+
+.profile-avatar {
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%) !important;
+}
+
+.detail-item {
+    background-color: #f8fafc !important;
+    border: 1px solid var(--theme-border) !important;
+    border-left: 4px solid var(--theme-primary) !important;
+}
+
+/* --- 8. Premium Calm Footer Design --- */
+.footer-section {
+    background-color: #0f172a !important; /* Dark Slate */
+    color: #cbd5e1 !important;
+    padding: 60px 0;
+    margin-top: 60px;
+    border-top: 1px solid #1e293b;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+.footer-column h5 {
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-column p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.help-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.help-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #cbd5e1 !important;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.help-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+    color: #ffffff !important;
+}
+
+.btn-about {
+    background: var(--theme-primary) !important;
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+}
+
+.btn-about:hover {
+    background: var(--theme-primary-hover) !important;
+    transform: translateY(-2px);
+    color: white !important;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #cbd5e1 !important;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background-color: var(--theme-primary);
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    border-top: 1px solid #1e293b;
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
