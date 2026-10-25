@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar kendaraan rental Adam Rental.">
+  <title>Mobil Tersedia — Adam Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root { --ink: #0f172a; --muted: #64748b; --blue: #2563eb; --light: #f8fafc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; color: var(--ink); font-family: Inter, sans-serif; background: var(--light); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px, 6vw, 80px); background: white; border-bottom: 1px solid #e2e8f0; }
+    .brand { color: var(--ink); text-decoration: none; font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+    .brand i { color: var(--blue); font-size: 1.45rem; }
+    .back { color: #475569; text-decoration: none; font-size: .9rem; font-weight: 600; }
+    .back:hover { color: var(--blue); }
+    main { width: min(1120px, 100%); margin: auto; padding: 52px 24px 70px; }
+    .heading { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 30px; }
+    .eyebrow { color: var(--blue); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 8px 0 10px; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.05em; }
+    .description { margin: 0; color: var(--muted); line-height: 1.6; }
+    .dates { padding: 14px 18px; border: 1px solid #bfdbfe; border-radius: 14px; color: #1e40af; background: #eff6ff; white-space: nowrap; font-size: .85rem; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card { overflow: hidden; border: 1px solid #e2e8f0; border-radius: 18px; background: white; box-shadow: 0 8px 25px rgba(15,23,42,.06); transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(15,23,42,.12); }
+    .car-image { width: 100%; height: 190px; display: flex; align-items: center; justify-content: center; background: #dbeafe; color: #1d4ed8; font-size: 5rem; }
+    .card:nth-child(2) .car-image { background: #dcfce7; color: #15803d; }
+    .card:nth-child(3) .car-image { background: #fef3c7; color: #b45309; }
+    .card:nth-child(4) .car-image { background: #fce7f3; color: #be185d; }
+    .card:nth-child(5) .car-image { background: #ede9fe; color: #6d28d9; }
+    .card:nth-child(6) .car-image { background: #e0f2fe; color: #0369a1; }
+    .content { padding: 20px; }
+    .type { color: var(--muted); font-size: .76rem; font-weight: 700; text-transform: uppercase; }
+    h2 { margin: 6px 0 10px; font-size: 1.2rem; }
+    .specs { display: flex; gap: 14px; color: var(--muted); font-size: .78rem; }
+    .specs i { color: var(--blue); margin-right: 4px; }
+    .price-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 20px; }
+    .price strong { display: block; font-size: 1.05rem; color: var(--ink); }
+    .price span { color: var(--muted); font-size: .72rem; }
+    .book { border: 0; border-radius: 999px; padding: 10px 15px; color: white; background: var(--blue); font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
+    .book:hover { background: #1d4ed8; }
+    footer { padding: 22px; text-align: center; color: #94a3b8; font-size: .78rem; }
+    @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } .heading { align-items: start; flex-direction: column; } .dates { white-space: normal; } }
+    @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } nav { padding: 16px 20px; } main { padding-top: 35px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="index.html"><i class="bi bi-car-front-fill"></i> Adam Rental</a>
+    <a class="back" href="index.html"><i class="bi bi-arrow-left"></i> Ubah tanggal</a>
+  </nav>
+  <main>
+    <div class="heading">
+      <div>
+        <div class="eyebrow">Katalog kendaraan</div>
+        <h1>Mobil tersedia untuk Anda</h1>
+        <p class="description">Pilih kendaraan yang paling sesuai untuk perjalanan Anda.</p>
+      </div>
+      <div class="dates" id="rentalDates"><i class="bi bi-calendar3"></i> Memuat tanggal...</div>
+    </div>
+    <section class="grid" aria-label="Daftar mobil tersedia">
+      <article class="card"><div class="car-image"><i class="bi bi-car-front-fill"></i></div><div class="content"><div class="type">MPV · Automatic</div><h2>Toyota Avanza</h2><div class="specs"><span><i class="bi bi-people-fill"></i> 7 kursi</span><span><i class="bi bi-gear-fill"></i> Matic</span></div><div class="price-row"><div class="price"><strong>Rp350.000</strong><span>per hari</span></div><button class="book" data-car="Toyota Avanza">Pesan</button></div></div></article>
+      <article class="card"><div class="car-image"><i class="bi bi-car-front-fill"></i></div><div class="content"><div class="type">City Car · Automatic</div><h2>Honda Brio</h2><div class="specs"><span><i class="bi bi-people-fill"></i> 5 kursi</span><span><i class="bi bi-gear-fill"></i> Matic</span></div><div class="price-row"><div class="price"><strong>Rp275.000</strong><span>per hari</span></div><button class="book" data-car="Honda Brio">Pesan</button></div></div></article>
+      <article class="card"><div class="car-image"><i class="bi bi-car-front-fill"></i></div><div class="content"><div class="type">MPV · Automatic</div><h2>Toyota Innova</h2><div class="specs"><span><i class="bi bi-people-fill"></i> 7 kursi</span><span><i class="bi bi-gear-fill"></i> Matic</span></div><div class="price-row"><div class="price"><strong>Rp550.000</strong><span>per hari</span></div><button class="book" data-car="Toyota Innova">Pesan</button></div></div></article>
+      <article class="card"><div class="car-image"><i class="bi bi-car-front-fill"></i></div><div class="content"><div class="type">SUV · Automatic</div><h2>Honda HR-V</h2><div class="specs"><span><i class="bi bi-people-fill"></i> 5 kursi</span><span><i class="bi bi-gear-fill"></i> Matic</span></div><div class="price-row"><div class="price"><strong>Rp500.000</strong><span>per hari</span></div><button class="book" data-car="Honda HR-V">Pesan</button></div></div></article>
+      <article class="card"><div class="car-image"><i class="bi bi-car-front-fill"></i></div><div class="content"><div class="type">Sedan · Automatic</div><h2>Toyota Camry</h2><div class="specs"><span><i class="bi bi-people-fill"></i> 5 kursi</span><span><i class="bi bi-gear-fill"></i> Matic</span></div><div class="price-row"><div class="price"><strong>Rp850.000</strong><span>per hari</span></div><button class="book" data-car="Toyota Camry">Pesan</button></div></div></article>
+      <article class="card"><div class="car-image"><i class="bi bi-car-front-fill"></i></div><div class="content"><div class="type">MPV · Manual</div><h2>Mitsubishi Xpander</h2><div class="specs"><span><i class="bi bi-people-fill"></i> 7 kursi</span><span><i class="bi bi-gear-fill"></i> Manual</span></div><div class="price-row"><div class="price"><strong>Rp425.000</strong><span>per hari</span></div><button class="book" data-car="Mitsubishi Xpander">Pesan</button></div></div></article>
+    </section>
+  </main>
+  <footer>© 2026 Adam Rental. Frontend demo.</footer>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const start = params.get('start_date');
+    const end = params.get('end_date');
+    const formatDate = (value) => value ? new Date(`${value}T00:00:00`).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) : '-';
+    document.querySelector('#rentalDates').innerHTML = `<i class="bi bi-calendar3"></i> ${formatDate(start)} — ${formatDate(end)}`;
+    document.querySelectorAll('.book').forEach((button) => button.addEventListener('click', () => alert(`Demo frontend: ${button.dataset.car} dipilih untuk ${formatDate(start)} sampai ${formatDate(end)}.`)));
+  </script>
+</body>
+</html>

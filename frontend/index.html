@@ -79,8 +79,16 @@
     start.min = today; end.min = today;
     document.querySelector('#bookingForm').addEventListener('submit', (event) => {
       event.preventDefault();
-      if (end.value < start.value) { alert('Tanggal selesai harus setelah tanggal mulai.'); return; }
-      alert(`Demo frontend: pencarian ${start.value} sampai ${end.value} siap dihubungkan ke backend.`);
+      if (end.value < start.value) {
+        alert('Tanggal selesai harus setelah tanggal mulai.');
+        return;
+      }
+
+      const params = new URLSearchParams({
+        start_date: start.value,
+        end_date: end.value
+      });
+      window.location.href = `cars.html?${params.toString()}`;
     });
   </script>
 </body>
